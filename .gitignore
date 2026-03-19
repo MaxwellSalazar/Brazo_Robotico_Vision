@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Entornos virtuales
+.venv/
+venv/
+ENV/
+
+# Streamlit
+.streamlit/
+
+# Logs/datos generados
+datos/*.csv
+
+# SO/editores
+.DS_Store
+Thumbs.db
+

@@ -1,0 +1,6 @@
+numpy
+opencv-python
+streamlit
+RPi.GPIO
+adafruit-circuitpython-ads1x15
+
