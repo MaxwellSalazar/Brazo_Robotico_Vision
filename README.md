@@ -48,6 +48,9 @@ python test_modulos.py
 ### En PC (desarrollo, sin hardware Raspberry)
 
 ```bash
+# Recomendado: usa entorno virtual para aislar dependencias
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 
 # Sistema completo: robot + dashboard
@@ -66,6 +69,14 @@ Notas:
 - `gpio_wrapper.py` usa GPIO simulado en PC (`PLATAFORMA=MOCK`).
 - `modulos/modulo_sensores.py` simula lecturas en PC.
 - `modulos/modulo_vision.py` requiere cámara (USB/webcam). Si no hay cámara, el módulo de visión avisa y se detiene; el resto del sistema puede seguir corriendo.
+
+Tip (Windows): si PowerShell bloquea la activación (`Activate.ps1`), puedes ejecutar sin activar así:
+
+```bash
+.\.venv\Scripts\python -m pip install -r requirements.txt
+.\.venv\Scripts\python test_modulos.py
+.\.venv\Scripts\python main.py
+```
 
 ## Flujo recomendado (Laptop → Raspberry) y colaboración
 

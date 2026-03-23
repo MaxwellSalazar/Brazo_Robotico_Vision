@@ -19,6 +19,20 @@ import time
 import threading
 import queue as q_lib
 
+# --- Consola/encoding (Windows) ---
+# Evita que el script falle al imprimir caracteres Unicode (por ejemplo, líneas tipo "─").
+def _reconfigurar_salida_utf8():
+    try:
+        if hasattr(sys.stdout, "reconfigure"):
+            sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        if hasattr(sys.stderr, "reconfigure"):
+            sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        # Si no se puede reconfigurar (por ejemplo, stdout redirigido), seguimos.
+        pass
+
+_reconfigurar_salida_utf8()
+
 # --- Fix crítico para Windows ---
 # Agrega la carpeta raíz del proyecto al path ANTES de cualquier import
 # de módulos del proyecto. Sin esto, Python no encuentra 'modulos/'.
